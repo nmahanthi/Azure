@@ -1,0 +1,129 @@
+Monitoring Azure Kubernetes Service (AKS) is essential to ensure the health, performance, and scalability of your containerized applications. Azure provides several built-in tools and third-party integrations for effective AKS monitoring. Here's how you can monitor AKS, focusing on various aspects like resource usage, application performance, and cluster health.
+
+### 1. **Azure Monitor and Azure Insights (Built-in Monitoring)**
+Azure Monitor and its Kubernetes-specific component, **Azure Monitor for Containers**, provide deep insights into the health of your AKS cluster and workloads.
+
+#### **Azure Monitor for Containers Setup**
+- **Step 1: Enable Monitoring during AKS creation**  
+  When creating an AKS cluster, you can enable monitoring by selecting the **Enable Container Insights** option in the Azure portal.
+  
+- **Step 2: Install via Helm or Azure CLI for existing clusters**  
+  You can enable monitoring on an existing cluster using the Azure CLI:
+  ```bash
+  az aks enable-addons --resource-group <yourResourceGroup> --name <yourAKSClusterName> --addons monitoring --workspace-resource-id <yourLogAnalyticsWorkspaceId>
+  ```
+
+#### **Metrics Collected**
+Azure Monitor collects various **node-level** and **pod-level** metrics:
+- **Node metrics**: CPU usage, memory usage, disk I/O.
+- **Pod metrics**: CPU/memory usage per pod, restart counts, running states, and pending/failed pods.
+- **Cluster health**: The overall health of the AKS cluster and nodes, showing alerts if nodes are unresponsive or unhealthy.
+
+#### **Visualizing in Azure Monitor**
+Once enabled, go to **Azure Monitor -> Insights -> Containers** to see:
+- A dashboard that provides an overview of cluster health.
+- Performance graphs of pods, nodes, and containers.
+- Searchable logs in **Log Analytics**, which can be queried using **Kusto Query Language (KQL)** for deep dive analysis.
+
+Example KQL Query:
+```kql
+ContainerInsights | where TimeGenerated > ago(1h) | summarize avg(CPUUsagePercent) by Computer, bin(TimeGenerated, 5m)
+```
+
+### 2. **Prometheus and Grafana for Advanced Monitoring**
+Prometheus and Grafana are popular open-source tools for Kubernetes monitoring. Prometheus is used for scraping metrics, and Grafana is used for creating dashboards.
+
+#### **Step 1: Install Prometheus and Grafana via Helm**
+You can deploy both Prometheus and Grafana into AKS using Helm.
+```bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm install prometheus prometheus-community/prometheus --namespace monitoring
+helm install grafana grafana/grafana --namespace monitoring
+```
+
+#### **Step 2: Scrape AKS Metrics**
+Prometheus can scrape AKS metrics from the Kubernetes API, kubelet, and other sources. It collects:
+- **Node and pod metrics**: CPU, memory, disk I/O, and network traffic.
+- **Application metrics**: Custom application metrics exposed via endpoints (e.g., `/metrics`).
+
+#### **Step 3: Create Dashboards in Grafana**
+Grafana is used to visualize the data collected by Prometheus. You can import Kubernetes-specific dashboards or create custom ones.
+
+Example Dashboard Panels:
+- Pod memory usage
+- Node CPU utilization
+- Number of active and failed pods
+- Application response time (if integrated with app-level metrics)
+
+### 3. **Azure Monitor Logs (Log Analytics Workspace)**
+Log Analytics collects logs from AKS and allows advanced querying and alerting using KQL.
+
+#### **Common Use Cases for Log Analytics**:
+- **Container logs**: See logs for individual containers using Log Analytics.
+- **Cluster activity**: Track cluster events, scaling activities, or failures.
+  
+#### **Query Examples**:
+- View container errors:
+```kql
+ContainerLog | where LogEntry contains "error"
+```
+- View node status:
+```kql
+KubeNodeInventory | summarize count() by Computer, NodeStatus
+```
+
+### 4. **Kubernetes Metrics Server**
+The Kubernetes Metrics Server is responsible for collecting resource metrics (CPU, memory) from all nodes and pods in the cluster. These metrics are typically used by Kubernetes for autoscaling (HPA - Horizontal Pod Autoscaler).
+
+#### **Install the Metrics Server**:
+To install the Metrics Server in your AKS cluster:
+```bash
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+```
+
+#### **Command-Line Monitoring**:
+Once installed, you can monitor resource usage via the CLI:
+- Get node resource usage:
+  ```bash
+  kubectl top nodes
+  ```
+- Get pod resource usage:
+  ```bash
+  kubectl top pods --all-namespaces
+  ```
+
+### 5. **Alerts and Autoscaling with Azure Monitor**
+You can configure alerts in Azure Monitor for conditions like high CPU usage, memory pressure, or failed pods. Alerts can trigger actions like scaling the cluster or notifying the operations team.
+
+#### **Create Alerts in Azure Monitor**:
+1. Go to **Azure Monitor -> Alerts -> New Alert Rule**.
+2. Define the condition, such as "Node CPU usage > 80%".
+3. Set up the action group, such as email notifications, webhook calls, or scaling actions.
+
+Example Alert Condition:
+- If a node’s CPU usage exceeds 80% for more than 10 minutes, alert the team and automatically scale the AKS cluster.
+
+### 6. **Application Performance Monitoring (APM) with Azure Application Insights**
+For deeper insights into application-level performance, use **Azure Application Insights**. It provides telemetry and performance monitoring of applications running inside AKS.
+
+#### **Steps to Set Up Application Insights**:
+1. **Install SDK**: Integrate the Application Insights SDK in your application (e.g., for .NET, Java, Node.js).
+2. **Configure Environment**: Set the `APPINSIGHTS_INSTRUMENTATIONKEY` in your container environment variables.
+3. **Visualize in Azure**: View metrics like request rates, error rates, and application dependencies in Azure Application Insights.
+
+### 7. **Integration with Third-Party Tools**
+You can integrate AKS with third-party monitoring and logging tools like:
+- **Datadog**: Provides comprehensive Kubernetes monitoring and APM.
+- **ELK Stack (Elasticsearch, Logstash, Kibana)**: Collects and visualizes logs from Kubernetes workloads.
+
+### Summary of Key Tools:
+- **Azure Monitor for Containers**: Cluster, node, and pod health monitoring.
+- **Prometheus and Grafana**: Advanced metrics collection and visualization.
+- **Log Analytics (KQL)**: Custom log queries and alerting.
+- **Metrics Server**: Resource metrics for HPA and command-line monitoring.
+- **Application Insights**: Application performance monitoring and tracing.
+
+### Conclusion
+To monitor AKS effectively, a combination of Azure-native services (Azure Monitor, Application Insights) and open-source tools (Prometheus, Grafana) 
+can provide comprehensive insights into both infrastructure and application-level performance. 
+This setup ensures that you can respond to issues in real-time, optimize resource usage, and maintain the health of your Kubernetes cluster.
