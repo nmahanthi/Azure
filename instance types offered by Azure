@@ -1,0 +1,24 @@
+What are the instance types offered by Azure?
+
+
+Azure offers a number of different instance types based on what needs they fulfill. 
+•	General Purpose - CPU to memory ratio is balanced. Provides low to medium traffic web servers, small to medium databases and is ideal for testing and development
+Largest instance size: Standard_D64_v3
+256 GB Memory and 1600 GB SSD Temp Storage
+•	Compute Optimized - High CPU to memory ratio. Best suited for medium traffic web servers, application servers, batch processes, and network appliances
+Largest instance size: Standard_F72s_V2
+144 GB Memory and 576 GB SSD Temp Storage
+•	Memory-Optimized - High memory to CPU ratio. Best suited for relational database servers, in-memory analytics, and medium to large caches
+Largest instance size: Standard_M128m
+3892 GB Memory and 14,336 GB SSD Temp Storage
+•	Storage Optimized - Provides high disk IO and throughput. Best suited for Big Data, NoSQL and SQL Databases
+Largest instance size: Standard_L32s
+256 GB Memory and 5630 GB SSD Temp Storage
+•	GPU - Virtual Machines that specialize in heavy graphic rendering and video editing. It also helps with model training and inferencing with deep learning
+Largest instance size: Standard_ND24rs
+448 GB Memory and 2948 GB SSD Temp Storage
+4 GPUs and 96 GB Memory
+•	High-Performance Compute - Provides Azure’s fastest and powerful CPU virtual machines with optional high throughput interfaces
+Largest instance size: Standard_L32s
+224 GB Memory and 2000 GB SSD Temp Storage
+
