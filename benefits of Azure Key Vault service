@@ -1,0 +1,7 @@
+What are the benefits of Azure Key Vault service?
+
+The benefits of Azure Key Vault are as follows:
+Secure storage and management of keys and secrets: Azure Key Vault provides a secure and scalable solution for storing and managing keys, secrets, and certificates used in cloud applications.
+Centralized management: It allows you to centrally manage access to secrets and keys, simplifying the management and audit of sensitive data.
+Integration with Azure services: It integrates with other Azure services such as Azure virtual machines, Azure web apps and functions, Azure data lake, and Azure kubernetes service among others.
+Key management and rotation: Azure Key Vault provides built-in capabilities for key rotation and management, ensuring that your keys are always up-to-date and secure.
