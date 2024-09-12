@@ -1,0 +1,4 @@
+What is Azure Front Door and how does it work?
+
+Azure Front Door is a contemporary content delivery network on the cloud that delivers high scalability, performance, and security to users when accessing content and applications. It works by using Microsoft's global network of edge nodes to route traffic to the nearest available backend service.
+It provides a range of routing options, including URL-based routing, geo-routing, and weighted traffic distribution. This allows businesses to optimize their application delivery by sending traffic to the closest available backend service or the service with the lowest latency.
