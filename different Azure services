@@ -1,0 +1,27 @@
+What are the different Azure services?
+
+There are numerous Azure services across various categories. Here, we will provide a brief overview of some key services in each category:
+Compute:
+Azure Virtual Machines: Infrastructure as a Service (IaaS) solution, providing flexible, on-demand VMs.
+Azure Functions: Serverless compute service to run event-driven code without managing infrastructure.
+Networking:
+Azure Virtual Network: Isolated, private networks in Azure with fine-grained control over traffic between subnets.
+Azure Load Balancer: Layer-4 load balancer for distributing network traffic across service instances.
+Storage:
+Azure Blob Storage: Scalable, secure, and cost-effective object storage for unstructured binary and text data.
+Azure File Storage: Managed file shares for cloud or on-premises deployments.
+Databases:
+Azure SQL Database: Fully managed, intelligent, and scalable relational database service based on SQL Server.
+Cosmos DB: Globally distributed, multi-model NoSQL database service with low latency and tunable consistency.
+Security and identity:
+Azure Active Directory: Identity and access management service for centralized user management, authentication, and authorization.
+Azure Key Vault: Secure storage and management of cryptographic keys, secrets, and certificates.
+Developer and management tools:
+Azure DevOps: All-in-one solution for planning, collaboration, build, test, and deployment of applications.
+Azure Monitor: Comprehensive, full-stack monitoring service for application and infrastructure performance.
+Analytics and IoT:
+Azure Stream Analytics: Real-time, complex event-processing service for streaming data.
+Azure Data Factory: Data integration service for orchestrating and automating data movement and transformation.
+AI and Machine Learning:
+Azure Machine Learning: Scalable, managed platform for model development, deployment, and management.
+Azure Cognitive Services: Suite of AI services for vision, speech, text, and language understanding.
