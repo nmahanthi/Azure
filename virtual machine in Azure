@@ -1,0 +1,12 @@
+What is a virtual machine in Azure? How do you create a virtual machine in Azure?
+
+In Azure, a virtual machine (VM) is a computing environment that behaves like a physical computer but is implemented entirely in software.
+A VM runs on physical hardware, but its operating system, software applications, and data are all stored in a virtualized environment.
+Azure provides a range of virtual machines that users can choose from with different sizes, configurations, and operating systems.
+To create a virtual machine in Azure, follow these general steps:
+•	Sign in to the Azure portal at https://portal.azure.com.
+•	Click on the "Create a Resource" button on the left-hand menu and search for "Windows Server" or "Linux" depending on the operating system you want to use.
+•	Select the appropriate virtual machine image and size based on your requirements. You can choose from different sizes depending on CPU, memory, and storage capacity.
+•	Configure the VM settings, including the name, username, and password for the administrator account, network settings, and disk settings.
+•	Review the summary page and click on "Create" to create the virtual machine.
+•	Once the VM is created, you can connect to it using Remote Desktop for Windows virtual machines or SSH for Linux virtual machines.
