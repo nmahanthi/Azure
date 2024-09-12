@@ -1,0 +1,9 @@
+What are Azure Arc-enabled servers used for?
+
+Azure Arc-enabled servers are used to extend Azure management capabilities and apply Azure services consistently across hybrid and multi-cloud environments. They help organizations manage their resources—running on-premises, in the cloud, or at the edge—regardless of the infrastructure provider.
+Some of the key features of Azure Arc-enabled servers include:
+Centralized Management: Azure Arc unifies the management of resources across on-premises, Azure, and other cloud environments using Azure Resource Manager. This makes it easier to monitor, manage, and maintain resources, as well as apply consistent governance across the entire infrastructure.
+Policy Compliance and Security: With Azure Arc, organizations can apply uniform policies and security measures across their resources, ensuring consistent compliance and risk assessment. Azure Policy and Azure Security Center help users identify and respond to threats while complying with regulatory requirements.
+Inventory and Resource Organization: Azure Arc provides a single pane of glass to maintain an inventory of servers, categorize them using tagging, and group and manage them as required. This allows for quicker discovery and management of resources.
+Role-Based Access Control (RBAC): Azure Arc extends Azure's RBAC capabilities to manage access control permissions across different environments. It helps organizations fine-tune access control by assigning user roles, ensuring that only authorized users can take actions on the resources.
+Extension Management: Azure Arc enables organizations to use Azure VM extensions for patch management, security, agent-based monitoring, and other operations on non-Azure machines.
