@@ -1,0 +1,7 @@
+What are the main advantages of using Azure Cosmos DB?
+
+The primary advantages of Azure Cosmos DB are as follows:
+Global distribution: Cosmos DB enables you to distribute data across multiple regions which ensures low latency and high availability for your applications.
+Multi-model: It provides support for multiple data models, including document, key-value, graph, and column family. This allows you to use the right data model for your application’s needs.
+Scalability: Cosmos DB provides horizontal scaling for data which enables you to scale your databases to handle millions of requests per second.
+Security: It provides built-in security features, including network isolation, encryption at rest, and role-based access control.
